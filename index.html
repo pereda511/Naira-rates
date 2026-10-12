@@ -9,7 +9,7 @@
     <script>
         // ========================================================
         // 1. PUT YOUR WHATSAPP PHONE NUMBER HERE 
-        // (Keep the 234 country code, do not add a + or spaces)
+        // (Keep the 2348100812113)
         // ========================================================
         const MY_PHONE_NUMBER = "2348100812113"; 
 
@@ -94,6 +94,7 @@
         function trade(assetName) {
             const message = encodeURIComponent("Hello, I want to sell " + assetName + " on your platform.");
             window.location.href = "https://wa.me" + MY_PHONE_NUMBER + "?text=" + message;
+
         }
 
         fetchLiveRates();
