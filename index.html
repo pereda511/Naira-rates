@@ -71,7 +71,7 @@
         </div>
     </div>
 
-                    async function fetchLiveRates() {
+                            async function fetchLiveRates() {
             try {
                 // Fetching USD market price index from an unrestricted open API network
                 const res = await fetch('https://cryptocompare.com');
@@ -90,19 +90,17 @@
                 console.error("Rate Fetch Error:", error);
                 // Secure fallback display so your page never stays stuck loading
                 document.getElementById('usdt-rate').innerText = '₦' + NAIRA_DOLLAR_RATE.toLocaleString();
-                document.getElementById('btc-rate').innerText = '₦' + Math.round(90000 * NAIRA_DOLLAR_RATE).toLocaleString();
+                document.getElementById('btc-rate').innerText = '₦' + Math.round(65000 * NAIRA_DOLLAR_RATE).toLocaleString();
             }
         }
 
-            } catch (error) {
-                console.error("Bybit Fetch Error:", error);
-                
-                // Local static fallback parameters so your customers always see numbers if network drops
-                document.getElementById('usdt-rate').innerText = '₦' + NAIRA_DOLLAR_RATE.toLocaleString();
-                document.getElementById('btc-rate').innerText = 'System Updating...';
-            }
+        function trade(assetName) {
+            const message = encodeURIComponent("Hello, I want to sell " + assetName + " on your platform.");
+            window.location.href = "https://wa.me/" + MY_PHONE_NUMBER + "?text=" + message;
         }
-        }
->
+
+        fetchLiveRates();
+        setInterval(fetchLiveRates, 60000);
+    </script>
 </body>
 </html>
