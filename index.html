@@ -71,25 +71,29 @@
         </div>
     </div>
 
-            async function fetchLiveRates() {
+                    async function fetchLiveRates() {
             try {
-                // Fetching official Spot market rates directly from Bybit API v5
-                const res = await fetch('https://bybit.com');
-                const json = await res.json();
+                // Fetching USD market price index from an unrestricted open API network
+                const res = await fetch('https://cryptocompare.com');
+                const data = await res.json();
                 
-                // Bybit returns data inside a targeted result list array
-                const btcData = json.result.list[0];
-                const btcUsd = parseFloat(btcData.lastPrice);
+                const btcUsd = parseFloat(data.USD);
 
-                // Multiply Bybit's dollar price against your local parallel market target
+                // Multiply the live market index against your customized base multiplier
                 const btcNaira = Math.round(btcUsd * NAIRA_DOLLAR_RATE);
-                
-                // USDT is mathematically paired 1:1 with USD benchmark value
                 const usdtNaira = Math.round(1 * NAIRA_DOLLAR_RATE);
 
-                // Render cleanly inside your layout containers
+                // Instantly swap the loading text with active currency numbers
                 document.getElementById('usdt-rate').innerText = '₦' + usdtNaira.toLocaleString();
                 document.getElementById('btc-rate').innerText = '₦' + btcNaira.toLocaleString();
+            } catch (error) {
+                console.error("Rate Fetch Error:", error);
+                // Secure fallback display so your page never stays stuck loading
+                document.getElementById('usdt-rate').innerText = '₦' + NAIRA_DOLLAR_RATE.toLocaleString();
+                document.getElementById('btc-rate').innerText = '₦' + Math.round(90000 * NAIRA_DOLLAR_RATE).toLocaleString();
+            }
+        }
+
             } catch (error) {
                 console.error("Bybit Fetch Error:", error);
                 
