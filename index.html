@@ -90,13 +90,11 @@
                 console.error("Rate Fetch Error:", error);
                 // Secure fallback display so your page never stays stuck loading
                 document.getElementById('usdt-rate').innerText = '₦' + NAIRA_DOLLAR_RATE.toLocaleString();
-                document.getElementById('btc-rate').innerText = '₦' + Math.round(65000 * NAIRA_DOLLAR_RATE).toLocaleString();
-            }
-        }
+                document.getElementById('btc-rate').innerText = '₦' + Math.round(65000 * NAIRA_DOLLAR_RATE).        }
 
         function trade(assetName) {
             const message = encodeURIComponent("Hello, I want to sell " + assetName + " on your platform.");
-            window.location.href = "https://wa.me/" + MY_PHONE_NUMBER + "?text=" + message;
+            window.location.href = "https://wa.me" + MY_PHONE_NUMBER + "?text=" + message;
         }
 
         fetchLiveRates();
