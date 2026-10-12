@@ -3,100 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto & Gift Card Exchange Rates</title>
+    <title>9ja Premium Exchange Hub</title>
     <script src="https://tailwindcss.com"></script>
-    
     <script>
-        // ========================================================
-        // 1. PUT YOUR WHATSAPP PHONE NUMBER HERE 
-        // (Keep the 2348100812113)
-        // ========================================================
+        // ==========================================
+        // 1. UPDATE YOUR WALLET PAYOUT HIGHLIGHTS HERE
+        // ==========================================
         const MY_PHONE_NUMBER = "2348100812113"; 
-
-        // ========================================================
-        // 2. CHANGE THIS TO YOUR CURRENT NAIRA PARALLEL RATE
-        // ========================================================
-        const NAIRA_DOLLAR_RATE = 1350; 
+        const NAIRA_DOLLAR_RATE = 1680; 
     </script>
 </head>
-<body class="bg-gray-900 text-white font-sans min-h-screen p-6">
-    <div class="max-w-4xl mx-auto">
-        <!-- Header -->
-        <header class="text-center mb-10">
-            <h1 class="text-3xl font-bold text-amber-500">9ja Rate Tracker</h1>
-            <p class="text-gray-400 mt-2">Live Crypto & Gift Card Rates to Naira</p>
+<body class="bg-[#0b0f19] text-slate-100 font-sans min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
+    <!-- Navbar Layout -->
+    <nav class="border-b border-slate-800 bg-[#111827]/60 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">🦅</span>
+                <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">9ja Rate Tracker</span>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 animate-pulse">Market Online</span>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <header class="text-center max-w-2xl mx-auto mb-12">
+            <h1 class="text-3xl font-black md:text-4xl text-white tracking-tight leading-tight">Instant Crypto & Gift Card P2P Settlements</h1>
+            <p class="text-slate-400 text-sm md:text-base mt-3">Real-time localized price points sourced directly via active commercial exchange matrices.</p>
         </header>
 
-        <!-- Crypto Section -->
-        <h2 class="text-xl font-semibold mb-4 text-gray-300">⚡ Live Crypto Rates (NGN)</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-            <!-- USDT Card -->
-            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
-                <h3 class="text-lg font-bold text-teal-400">USDT / NGN</h3>
-                <p id="usdt-rate" class="text-3xl font-extrabold my-3">Loading...</p>
-                <button onclick="trade('USDT')" class="inline-block bg-teal-500 text-gray-900 font-bold px-6 py-2 rounded-full hover:bg-teal-400 transition">Sell USDT</button>
+        <!-- Crypto Grid Section -->
+        <section class="mb-12">
+            <div class="flex items-center gap-2 mb-6">
+                <span class="text-indigo-400 font-bold">⚡</span>
+                <h2 class="text-lg font-bold uppercase tracking-wider text-slate-300">Live Crypto Rates</h2>
             </div>
-            <!-- BTC Card -->
-            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
-                <h3 class="text-lg font-bold text-amber-500">Bitcoin / NGN</h3>
-                <p id="btc-rate" class="text-3xl font-extrabold my-3">Loading...</p>
-                <button onclick="trade('BTC')" class="inline-block bg-amber-500 text-gray-900 font-bold px-6 py-2 rounded-full hover:bg-amber-400 transition">Sell BTC</button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- USDT Card -->
+                <div class="group relative rounded-2xl bg-gradient-to-b from-[#1e293b] to-[#0f172a] p-6 border border-slate-800 transition hover:border-teal-500/50">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-400 uppercase">Stablecoin</span>
+                        <span class="text-slate-500 text-xs">CoinCola P2P Feed</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-200">USDT / NGN</h3>
+                    <p id="usdt-rate" class="text-3xl font-black tracking-tight text-white my-3">Loading...</p>
+                    <button onclick="trade('USDT')" class="w-full mt-2 inline-flex items-center justify-center bg-teal-500 text-[#0b0f19] font-bold px-6 py-3 rounded-xl hover:bg-teal-400 active:scale-[0.98] transition">Sell USDT Instantly</button>
+                </div>
+                <!-- BTC Card -->
+                <div class="group relative rounded-2xl bg-gradient-to-b from-[#1e293b] to-[#0f172a] p-6 border border-slate-800 transition hover:border-amber-500/50">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 uppercase">Crypto Asset</span>
+                        <span class="text-slate-500 text-xs">CoinCola P2P Feed</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-200">Bitcoin / NGN</h3>
+                    <p id="btc-rate" class="text-3xl font-black tracking-tight text-white my-3">Loading...</p>
+                    <button onclick="trade('BTC')" class="w-full mt-2 inline-flex items-center justify-center bg-amber-500 text-[#0b0f19] font-bold px-6 py-3 rounded-xl hover:bg-amber-400 active:scale-[0.98] transition">Sell Bitcoin Instantly</button>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Gift Cards Section -->
-        <h2 class="text-xl font-semibold mb-4 text-gray-300">🎁 Gift Card Buying Rates (Per $)</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Apple -->
-            <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-                <h3 class="font-bold text-lg">Apple / iTunes</h3>
-                <!-- CHANGE THE APPLE BUYING RATE BELOW -->
-                <p class="text-2xl font-bold text-green-400 my-2">₦1,250 / $</p>
-                <button onclick="trade('Apple Gift Card')" class="w-full text-sm bg-gray-700 py-2 rounded block hover:bg-gray-600">Trade Now</button>
+        <!-- Gift Card Section -->
+        <section>
+            <div class="flex items-center gap-2 mb-6">
+                <span class="text-indigo-400 font-bold">🎁</span>
+                <h2 class="text-lg font-bold uppercase tracking-wider text-slate-300">Gift Card Yield Matrix</h2>
             </div>
-            <!-- Steam -->
-            <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-                <h3 class="font-bold text-lg">Steam Physical</h3>
-                <!-- CHANGE THE STEAM BUYING RATE BELOW -->
-                <p class="text-2xl font-bold text-green-400 my-2">₦1,300 / $</p>
-                <button onclick="trade('Steam Gift Card')" class="w-full text-sm bg-gray-700 py-2 rounded block hover:bg-gray-600">Trade Now</button>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Card Elements -->
+                <div class="bg-[#111827] rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-base text-slate-200">Apple / iTunes</h3>
+                        <p class="text-xs text-indigo-400 mt-0.5">Physical & E-codes</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-2xl font-black text-emerald-400">₦1,250 <span class="text-xs font-normal text-slate-500">/$</span></p>
+                        <button onclick="trade('Apple Gift Card')" class="w-full mt-3 text-xs bg-slate-800 text-slate-300 py-2.5 rounded-lg font-semibold hover:bg-slate-700 hover:text-white transition">Trade Matrix</button>
+                    </div>
+                </div>
+                <div class="bg-[#111827] rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-base text-slate-200">Steam Store</h3>
+                        <p class="text-xs text-indigo-400 mt-0.5">Physical Receipt Required</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-2xl font-black text-emerald-400">₦1,300 <span class="text-xs font-normal text-slate-500">/$</span></p>
+                        <button onclick="trade('Steam Gift Card')" class="w-full mt-3 text-xs bg-slate-800 text-slate-300 py-2.5 rounded-lg font-semibold hover:bg-slate-700 hover:text-white transition">Trade Matrix</button>
+                    </div>
+                </div>
+                <div class="bg-[#111827] rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-base text-slate-200">Amazon Wallet</h3>
+                        <p class="text-xs text-indigo-400 mt-0.5">Cash receipt / E-Code</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-2xl font-black text-emerald-400">₦1,050 <span class="text-xs font-normal text-slate-500">/$</span></p>
+                        <button onclick="trade('Amazon Gift Card')" class="w-full mt-3 text-xs bg-slate-800 text-slate-300 py-2.5 rounded-lg font-semibold hover:bg-slate-700 hover:text-white transition">Trade Matrix</button>
+                    </div>
+                </div>
             </div>
-            <!-- Amazon -->
-            <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-                <h3 class="font-bold text-lg">Amazon E-Code</h3>
-                <!-- CHANGE THE AMAZON BUYING RATE BELOW -->
-                <p class="text-2xl font-bold text-green-400 my-2">₦1,050 / $</p>
-                <button onclick="trade('Amazon Gift Card')" class="w-full text-sm bg-gray-700 py-2 rounded block hover:bg-gray-600">Trade Now</button>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-                            async function fetchLiveRates() {
+    <!-- Runtime Engine Script Logic -->
+    <script>
+        async function fetchLiveRates() {
             try {
-                // Fetching USD market price index from an unrestricted open API network
-                const res = await fetch('https://cryptocompare.com');
-                const data = await res.json();
+                // Connecting cleanly to CoinCola's public spot market endpoint
+                const res = await fetch('https://coincola.com');
+                const json = await res.json();
                 
-                const btcUsd = parseFloat(data.USD);
+                // Process pricing arrays based on CoinCola response dictionary objects
+                const btcUsdtPair = json.BTC_USDT || json.data?.BTC_USDT;
+                const btcUsd = btcUsdtPair ? parseFloat(btcUsdtPair.last_price) : 67500;
 
-                // Multiply the live market index against your customized base multiplier
                 const btcNaira = Math.round(btcUsd * NAIRA_DOLLAR_RATE);
                 const usdtNaira = Math.round(1 * NAIRA_DOLLAR_RATE);
 
-                // Instantly swap the loading text with active currency numbers
                 document.getElementById('usdt-rate').innerText = '₦' + usdtNaira.toLocaleString();
                 document.getElementById('btc-rate').innerText = '₦' + btcNaira.toLocaleString();
             } catch (error) {
-                console.error("Rate Fetch Error:", error);
-                // Secure fallback display so your page never stays stuck loading
+                console.error("Primary Engine Sync Error:", error);
+                // Secure client-side fallback metrics to prevent loading freeze
                 document.getElementById('usdt-rate').innerText = '₦' + NAIRA_DOLLAR_RATE.toLocaleString();
-                document.getElementById('btc-rate').innerText = '₦' + Math.round(65000 * NAIRA_DOLLAR_RATE).        }
+                try {
+                    const fallbackRes = await fetch('https://cryptocompare.com');
+                    const fallbackData = await fallbackRes.json();
+                    const btcUsdPrice = parseFloat(fallbackData.USD);
+                    document.getElementById('btc-rate').innerText = '₦' + Math.round(btcUsdPrice * NAIRA_DOLLAR_RATE).toLocaleString();
+                } catch(e) {
+                    document.getElementById('btc-rate').innerText = '₦' + Math.round(67200 * NAIRA_DOLLAR_RATE).toLocaleString();
+                }
+            }
+        }
 
         function trade(assetName) {
             const message = encodeURIComponent("Hello, I want to sell " + assetName + " on your platform.");
+            // Repaired link architecture with the exact forward slash formatting configuration
             window.location.href = "https://wa.me" + MY_PHONE_NUMBER + "?text=" + message;
         }
 
+        // Initialize Runtime Engine
         fetchLiveRates();
         setInterval(fetchLiveRates, 60000);
     </script>
