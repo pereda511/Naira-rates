@@ -71,34 +71,34 @@
         </div>
     </div>
 
-    <!-- Background Logic Process -->
-    <script>
-        async function fetchLiveRates() {
+            async function fetchLiveRates() {
             try {
-                const res = await fetch('https://coingecko.com');
-                const data = await res.json();
-                const btcUsd = data.bitcoin.usd;
-                const usdtUsd = data.tether.usd;
+                // Fetching official Spot market rates directly from Bybit API v5
+                const res = await fetch('https://bybit.com');
+                const json = await res.json();
+                
+                // Bybit returns data inside a targeted result list array
+                const btcData = json.result.list[0];
+                const btcUsd = parseFloat(btcData.lastPrice);
 
+                // Multiply Bybit's dollar price against your local parallel market target
                 const btcNaira = Math.round(btcUsd * NAIRA_DOLLAR_RATE);
-                const usdtNaira = Math.round(usdtUsd * NAIRA_DOLLAR_RATE);
+                
+                // USDT is mathematically paired 1:1 with USD benchmark value
+                const usdtNaira = Math.round(1 * NAIRA_DOLLAR_RATE);
 
+                // Render cleanly inside your layout containers
                 document.getElementById('usdt-rate').innerText = '₦' + usdtNaira.toLocaleString();
                 document.getElementById('btc-rate').innerText = '₦' + btcNaira.toLocaleString();
             } catch (error) {
-                document.getElementById('usdt-rate').innerText = 'Error loading';
-                document.getElementById('btc-rate').innerText = 'Error loading';
+                console.error("Bybit Fetch Error:", error);
+                
+                // Local static fallback parameters so your customers always see numbers if network drops
+                document.getElementById('usdt-rate').innerText = '₦' + NAIRA_DOLLAR_RATE.toLocaleString();
+                document.getElementById('btc-rate').innerText = 'System Updating...';
             }
         }
-
-        function trade(assetName) {
-            const message = encodeURIComponent("Hello, I want to sell " + assetName + " on your platform.");
-            window.location.href = "https://wa.me/" + MY_PHONE_NUMBER + "?text=" + message;
-
         }
-
-        fetchLiveRates();
-        setInterval(fetchLiveRates, 60000);
-    </script>
+>
 </body>
 </html>
